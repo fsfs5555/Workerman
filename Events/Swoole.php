@@ -44,7 +44,7 @@ class Swoole implements EventInterface
         switch ($flag) {
             case self::EV_SIGNAL:
                 $res = \pcntl_signal($fd, $func, false);
-                if (! $this->_hasSignal && $res) {
+                if (!$this->_hasSignal && $res) {
                     Timer::tick(static::$signalDispatchInterval,
                         function () {
                             \pcntl_signal_dispatch();
